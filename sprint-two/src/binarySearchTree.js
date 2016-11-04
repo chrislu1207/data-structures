@@ -9,7 +9,7 @@ var BinarySearchTree = function(value) {
 
 var BSTMethods = {};
 
-BSTMethods.insert = function(value) {
+BSTMethods.insert = function(value) { //O(log n)
 
   var insertNode = function(node) {
     //console.log('Currently at node', node.value);
@@ -36,7 +36,7 @@ BSTMethods.insert = function(value) {
   insertNode(this);
 };
 
-BSTMethods.contains = function(value) {
+BSTMethods.contains = function(value) { //O(log n)
   var result = false;
   var traverseTree = function(node) {
     if (value === node.value) {
@@ -54,20 +54,20 @@ BSTMethods.contains = function(value) {
   return result;
 };
 
-BSTMethods.depthFirstLog = function(callback) {
+BSTMethods.depthFirstLog = function(callback) { //O(log n)
   var depthFirstTravel = function(node) {
     //console.log('Executing callback on node', node.value);
     callback(node.value);
     if (node.left.value !== undefined) {
       //console.log('Traversing down left to node', node.left.value);
       depthFirstTravel(node.left);
-    } else if (node.right.value !== undefined) {
+    }
+    if (node.right.value !== undefined) {
       //console.log('Traversing down right to node', node.right.value);
       depthFirstTravel(node.right);
-    } else {
-      //console.log('No children found, returning');
-      return;
     }
+    //console.log('No children found, returning');
+    return;
   };
   depthFirstTravel(this);
 };

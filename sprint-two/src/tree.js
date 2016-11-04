@@ -11,11 +11,11 @@ var Tree = function(value) {
 
 var treeMethods = {};
 
-treeMethods.addChild = function(value) {
+treeMethods.addChild = function(value) { // O(1)
   this.children.push(Tree(value));
 };
 
-treeMethods.contains = function(target) {
+treeMethods.contains = function(target) { // O(n)
   var result = false;
   var traverseTree = function(node) {
     if (node.value === target) {
