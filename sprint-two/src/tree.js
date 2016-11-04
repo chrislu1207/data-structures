@@ -40,6 +40,18 @@ treeMethods.contains = function(target) { // O(n)
   return result;
 };
 
+treeMethods.traverse = function(callback) {
+  var traverseTree = function(node) {
+    callback(node.value);
+    if (node.children) {
+      for (var i = 0; i < node.children.length; i++) {
+        traverseTree(node.children[i]);
+      }
+    }
+  };
+  traverseTree(this);
+};
+
 
 
 /*
