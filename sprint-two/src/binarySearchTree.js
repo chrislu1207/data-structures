@@ -56,16 +56,16 @@ BSTMethods.contains = function(value) {
 
 BSTMethods.depthFirstLog = function(callback) {
   var depthFirstTravel = function(node) {
-    console.log('Executing callback on node', node.value);
+    //console.log('Executing callback on node', node.value);
     callback(node.value);
     if (node.left.value !== undefined) {
-      console.log('Traversing down left to node', node.left.value);
+      //console.log('Traversing down left to node', node.left.value);
       depthFirstTravel(node.left);
     } else if (node.right.value !== undefined) {
-      console.log('Traversing down right to node', node.right.value);
+      //console.log('Traversing down right to node', node.right.value);
       depthFirstTravel(node.right);
     } else {
-      console.log('No children found, returning');
+      //console.log('No children found, returning');
       return;
     }
   };
