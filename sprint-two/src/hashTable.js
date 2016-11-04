@@ -11,11 +11,12 @@ HashTable.prototype.insert = function(k, v) {
     this._storage.set(index, []);               // shove in a new array
     this._storage.get(index).push([k, v]);      // retrieve said array and push in a new key value pair
   } else {
-    for (var i = 0; i < this._storage.get(index).length; i++) {
-      if (this._storage.get(index)[i][0] === k) {
-        this._storage.get(index)[i][1] = v;
+    var tableCell = this._storage.get(index);
+    for (var i = 0; i < tableCell.length; i++) {
+      if (tableCell[i][0] === k) {
+        tableCell[i][1] = v;
       } else {
-        this._storage.get(index).push([k, v]);
+        tableCell.push([k, v]);
       }
     }                                      // else
   }
