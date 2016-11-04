@@ -47,6 +47,17 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should handle hash function collisions while still deleting values', function() {
+    var oldHashFunction = window.getIndexBelowMaxForKey;
+    window.getIndexBelowMaxForKey = function() { return 0; };
+    hashTable.insert('Cat', 'Feisty');
+    hashTable.insert('Bug', 'Annoying');
+    hashTable.remove('Cat');
+    expect(hashTable.retrieve('Bug')).to.equal('Annoying');
+    expect(hashTable.retrieve('Cat')).to.equal(undefined);
+    window.getIndexBelowMaxForKey = oldHashFunction;
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {

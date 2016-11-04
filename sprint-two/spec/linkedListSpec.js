@@ -48,7 +48,7 @@ describe('linkedList', function() {
     expect(linkedList.contains(6)).to.equal(false);
   });
 
-  it('should contain a value that was added EX', function() {
+  it('should contain values that were added', function() {
     linkedList.addToTail(4);
     linkedList.addToTail(5);
     linkedList.addToTail(6);

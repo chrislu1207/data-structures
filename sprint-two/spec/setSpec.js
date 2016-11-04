@@ -24,4 +24,11 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should not add existing values to a set', function() {
+    set.add('Stephen Strange');
+    set.add('Peter Parker');
+    set.add('Peter Parker');
+    expect(set._storage.length).to.equal(2);
+  });
+
 });
