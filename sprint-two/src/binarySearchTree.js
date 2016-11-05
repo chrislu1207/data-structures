@@ -61,6 +61,50 @@ BSTMethods.depthFirstLog = function(callback) { //O(log n)
   depthFirstTravel(this);
 };
 
+BSTMethods.breadthFirstLog = function(callback) {
+  callback(this.value);
+  var breadthFirstTravel = function(node) {
+    if (node.left.value && node.right.value) {
+      callback(node.left.value);
+      callback(node.right.value);
+      breadthFirstTravel(node.left);
+      breadthFirstTravel(node.right);
+    } else if (node.left.value && !node.right.value) {
+      callback(node.left.value);
+      breadthFirstTravel(node.left);
+    } else if (!node.left.value && node.right.value) {
+      callback(node.right.value);
+      breadthFirstTravel(node.right);
+    }
+    return;
+  };
+  breadthFirstTravel(this);
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
