@@ -41,13 +41,11 @@ var DoublyLinkedList = function() {
     if (oldTail.previous === null) {
       list.head = null;
       list.tail = null;
-      return oldTailVal;
-    }
-    if (oldTail.previous) {
+    } else {
       list.tail = oldTail.previous;
+      list.tail.next = null;
     }
-    list.tail.next = null;
-    return oldTail.value;
+    return oldTailVal;
   };
 
   list.removeHead = function() { // O(1)
@@ -56,12 +54,10 @@ var DoublyLinkedList = function() {
     if (oldHead.next === null) {
       list.head = null;
       list.tail = null;
-      return oldHeadVal;
-    }
-    if (oldHead.next) {
+    } else {
       list.head = oldHead.next;
+      list.head.previous = null;
     }
-    list.head.previous = null;
     return oldHead.value;
   };
 
@@ -70,10 +66,9 @@ var DoublyLinkedList = function() {
     var traverseList = function(node) {
       if (node.value === target) {
         result = true;
+        return;
       } else if (node.next) {
         traverseList(node.next);
-      } else {
-        result = false;
       }
     };
     traverseList(list.head);
